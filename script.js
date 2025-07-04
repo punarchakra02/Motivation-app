@@ -1,6 +1,6 @@
 let selectedMood = null;
 
-// DOM elements
+
 const generateBtn = document.getElementById('generateBtn');
 const motivationDisplay = document.getElementById('motivationDisplay');
 const motivationText = document.getElementById('motivationText');
@@ -10,31 +10,29 @@ const fallbackNotice = document.getElementById('fallbackNotice');
 const btnText = document.querySelector('.btn-text');
 const loadingText = document.querySelector('.loading');
 
-// Mood selection
+
 document.querySelectorAll('.mood-card').forEach(card => {
     card.addEventListener('click', () => {
-        // Remove selected class from all cards
+     
         document.querySelectorAll('.mood-card').forEach(c => c.classList.remove('selected-mood'));
-        
-        // Add selected class to clicked card
+     
         card.classList.add('selected-mood');
         
-        // Store selected mood
+
         selectedMood = card.dataset.mood;
-        
-        // Enable generate button
+   
         generateBtn.disabled = false;
         
-        // Hide previous results
+   
         hideAllMessages();
     });
 });
 
-// Generate motivation
+
 generateBtn.addEventListener('click', async () => {
     if (!selectedMood) return;
     
-    // Show loading state
+
     setLoadingState(true);
     hideAllMessages();
     
@@ -78,7 +76,7 @@ function setLoadingState(loading) {
 }
 
 function displayMotivation(motivation, isFallback = false) {
-    // Hide display first for smooth transition
+   
     motivationDisplay.classList.remove('show');
     
     setTimeout(() => {
@@ -91,14 +89,14 @@ function displayMotivation(motivation, isFallback = false) {
             authorText.style.display = 'none';
         }
         
-        // Show fallback notice if applicable
+  
         if (isFallback) {
             fallbackNotice.style.display = 'block';
         } else {
             fallbackNotice.style.display = 'none';
         }
         
-        // Show display with animation
+   
         motivationDisplay.classList.add('show');
     }, 250);
 }
@@ -113,7 +111,7 @@ function hideAllMessages() {
     errorMessage.classList.remove('show');
 }
 
-// Add visual feedback on button press
+
 generateBtn.addEventListener('mousedown', function() {
     if (!this.disabled) {
         this.style.transform = 'translateY(0px)';
@@ -126,14 +124,14 @@ generateBtn.addEventListener('mouseup', function() {
     }
 });
 
-// Add keyboard support
+
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Enter' && selectedMood && !generateBtn.disabled) {
         generateBtn.click();
     }
 });
 
-// Add mood card keyboard navigation
+
 document.querySelectorAll('.mood-card').forEach((card, index) => {
     card.setAttribute('tabindex', '0');
     card.addEventListener('keydown', function(e) {
