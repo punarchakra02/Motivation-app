@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.mood-selector {
+    margin-bottom: 30px;
+}
+
+.mood-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.mood-card {
+    background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+    border: none;
+    border-radius: 15px;
+    padding: 20px 15px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.mood-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.mood-card.anxious {
+    background: linear-gradient(45deg, #a8edea 0%, #fed6e3 100%);
+    color: #333;
+}
+
+.mood-card.focus {
+    background: linear-gradient(45deg, #ffecd2 0%, #fcb69f 100%);
+    color: #333;
+}
+
+.mood-card.tired {
+    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+}
+
+.mood-card.confident {
+    background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+}
+
+.mood-card.overwhelmed {
+    background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.mood-card.procrastinating {
+    background: linear-gradient(45deg, #43e97b 0%, #38f9d7 100%);
+    color: #333;
+}
+
+.motivation-display {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 15px;
+    padding: 30px;
+    margin: 30px 0;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.motivation-display.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.quote {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-style: italic;
+    text-align: center;
+}
+
+.author {
+    font-size: 1rem;
+    opacity: 0.8;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.affirmation {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    font-weight: 500;
+    text-align: center;
+}
+
+.generate-btn {
+    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.generate-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.generate-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.generate-btn.loading {
+    pointer-events: none;
+}
+
+.loading {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.selected-mood {
+    background: #333 !important;
+    color: white !important;
+    transform: scale(1.05);
+}
+
+.error-message {
+    background: linear-gradient(45deg, #ff6b6b 0%, #ee5a24 100%);
+    color: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.error-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fallback-notice {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    font-style: italic;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .mood-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .quote {
+        font-size: 1.1rem;
+    }
+}

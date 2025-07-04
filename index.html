@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Motivation Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>✨ Daily Motivation</h1>
+        <p class="subtitle">Tell us how you're feeling, and we'll give you the perfect motivation boost!</p>
+        
+        <div class="mood-selector">
+            <div class="mood-grid">
+                <button class="mood-card anxious" data-mood="anxious">😰 Feeling Anxious</button>
+                <button class="mood-card focus" data-mood="focus">🎯 Need Focus</button>
+                <button class="mood-card tired" data-mood="tired">😴 Feeling Tired</button>
+                <button class="mood-card confident" data-mood="confident">💪 Need Confidence</button>
+                <button class="mood-card overwhelmed" data-mood="overwhelmed">🌊 Overwhelmed</button>
+                <button class="mood-card procrastinating" data-mood="procrastinating">⏰ Procrastinating</button>
+            </div>
+            
+            <button class="generate-btn" id="generateBtn" disabled>
+                <span class="btn-text">Generate Motivation</span>
+                <span class="loading" style="display: none;">✨ Generating...</span>
+            </button>
+        </div>
+
+        <div class="motivation-display" id="motivationDisplay">
+            <div class="quote" id="motivationText"></div>
+            <div class="author" id="authorText"></div>
+            <div class="fallback-notice" id="fallbackNotice" style="display: none;">
+                <small>✨ Generated using our curated collection</small>
+            </div>
+        </div>
+
+        <div class="error-message" id="errorMessage" style="display: none;">
+            <p>Oops! Something went wrong. Please try again.</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
