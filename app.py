@@ -6,6 +6,8 @@ import google.generativeai as genai
 
 
 load_dotenv()
+print("Loaded GEMINI_API_KEY:", os.getenv('GEMINI_API_KEY'))
+
 
 
 app = Flask(__name__)
@@ -14,7 +16,7 @@ app.secret_key = os.getenv('SECRET_KEY', 'your-default-secret-key')
 
 genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
 
-model = genai.GenerativeModel('models/gemini-1.5-flash')
+model = genai.GenerativeModel('models/gemini-2.0-flash')
 
 MOOD_PROMPTS = {
     'anxious': """Generate a calming motivational sentence for someone feeling anxious. 
